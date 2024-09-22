@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --accent-color: #FFD93D;
+  --text-color: #333;
+  --bg-color: #F8F8F8;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,13 +17,58 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+main {
+  flex: 1; /* Grow to take up remaining space */
+  padding-bottom: 2rem; /* Add some space for the footer */
 }
 
 .header {
-  background-color: #007bff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   padding: 1rem 0;
-  color: white;
-  position: relative
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.1) 10px,
+    rgba(255,255,255,0.1) 20px
+  );
+  animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50%, 50%);
+  }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
@@ -24,11 +77,6 @@ body {
   padding: 0 15px;
 }
 
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .social-icons {
   display: flex;
@@ -76,15 +124,17 @@ body {
 
 .search-bar input {
   padding: 0.5rem;
-  width: 45%; 
+  width: 45%;
   border-radius: 20px;
   border: none;
+  z-index: 1; /* Ensure it's above other elements */
 }
 
 .search-icon {
-  margin-left: -30px; 
+  margin-left: -30px;
   color: #007bff;
   cursor: pointer;
+  z-index: 1; /* Ensure search icon is clickable */
 }
   
   .filter {
@@ -144,11 +194,49 @@ body {
     background-color: #0056b3;
   }
   
-  .footer {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 1rem 0;
-    color: #666;
+.footer {
+  background-color: #007bff;
+  color: white;
+  padding: 2rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
   }
   
 

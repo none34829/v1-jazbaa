@@ -5,7 +5,7 @@
       { id: 3, name: 'Laptop Backpack', price: 49.99, image: 'ashoka maroon.png' },
       { id: 4, name: 'Scientific Calculator', price: 19.99, image: 'ashoka maroon.png' },
       { id: 5, name: 'Campus Map Poster', price: 9.99, image: 'ashoka maroon.png' },
-      { id: 6, name: 'Reusable Water Bottle', price: 14.99, image: 'ashoka maroon.png' },
+      { id: 6, name: 'Reusable Water Bottle', price: 14.99, image: 'ashoka maroon.png' }
     ];
 
     let cartCount = 0;

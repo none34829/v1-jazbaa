@@ -55,11 +55,11 @@
       displayProducts(filteredProducts);
     }
 
-    // Display all products on initial load
+
     document.addEventListener('DOMContentLoaded', () => {
       displayProducts(products);
       
-      // Add event listener for search input
+
       const searchInput = document.getElementById('search-input');
       searchInput.addEventListener('input', searchProducts);
     });

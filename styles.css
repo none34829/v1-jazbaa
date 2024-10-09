@@ -135,6 +135,63 @@ main {
   position: relative; 
   z-index: 2; 
 }
+
+@keyframes flyToCart {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+}
+
+@keyframes cartBurst {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 255, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 50px rgba(255, 255, 0, 0);
+  }
+}
+
+.flying-image {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-btn.burst {
+  animation: cartBurst 0.5s ease-out;
+}
+
+/*#cart-preview {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 150px;
+  max-height: 100px;
+  overflow-y: auto;
+}*/
+
+.cart-item {
+  margin: 2px;
+}
+
+.cart-item img {
+  border-radius: 2px;
+}
   
   .filter {
     padding: 1rem 0;
@@ -162,6 +219,7 @@ main {
     text-align: center;
     max-width: 250px;
     flex: 1 1 calc(25% - 40px);
+    transition: transform 0.3s ease;
   }
   
   .product-card img {
@@ -181,6 +239,7 @@ main {
   }
   
   .product-card button {
+    display: inline-block;
     padding: 0.5rem 1rem;
     background-color: #007bff;
     color: white;
@@ -192,9 +251,19 @@ main {
   .product-card button:hover {
     background-color: #0056b3;
   }
+
+  .product-card:hover {
+    transform: translateY(-10px) rotateY(10deg);
+    box-shadow: 0 15px 30px rgba(255, 94, 0, 0.3);
+  }
+  
+  .product-card img {
+    transition: filter 0.3s ease;
+  }
+  
   
 .footer {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: white;
   padding: 2rem 0;
   position: relative;
@@ -318,9 +387,41 @@ main {
   }
 }
 
+
+
 /* Tablet styles */
 @media (min-width: 769px) and (max-width: 1024px) {
   .product-card {
     flex: 1 1 calc(33.33% - 20px); 
   }
+}
+
+/* xs */
+@media(min-width: 475px) {
+   
+} 
+
+/* sm */
+@media(min-width: 640px) {
+    
+}
+
+/* md */
+@media(min-width: 768px) {
+    
+}
+
+/* lg */
+@media(min-width: 1024px) {
+
+} 
+
+/* xl */
+@media(min-width: 1280px) {
+    
+}
+
+/* 2xl */
+@media(min-width: 1536px) {
+    
 }

@@ -21,6 +21,7 @@ function displayProducts(productsList) {
           <h3>${product.name}</h3>
           <p>₹${product.price.toFixed(2)}</p>
           <button class="add-to-cart" data-product-id="${product.id}">Add to Cart</button>
+          <button class="view-product" data-product-id="${product.id}">View Product</button>
         </div>
       </div>
     `;
@@ -28,6 +29,9 @@ function displayProducts(productsList) {
   });
   document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', addToCart);
+  });
+  document.querySelectorAll('.view-product').forEach(button => {
+    button.addEventListener('click', viewProduct);
   });
 }
 
@@ -88,6 +92,36 @@ function addToCart(event) {
       updateCartCount();
       updateCartModal();
     }, 1000);
+  }
+}
+
+function viewProduct(event) {
+  const button = event.target;
+  const productId = parseInt(button.getAttribute('data-product-id'));
+  const product = products.find(p => p.id === productId);
+  
+  if (product) {
+    // Populate modal with product details
+    document.getElementById('modal-product-name').textContent = product.name;
+    document.getElementById('modal-product-price').textContent = `Price: ₹${product.price.toFixed(2)}`;
+    document.getElementById('modal-product-image').src = product.image;
+    document.getElementById('modal-product-description').textContent = `Description: This is a detailed description of the ${product.name}.`;
+
+    // Show the modal
+    const modal = document.getElementById('product-modal');
+    modal.style.display = 'block';
+
+    // Close modal functionality
+    document.getElementById('close-modal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
   }
 }
 
@@ -229,3 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleBodyScroll(disable) {
   document.body.style.overflow = disable ? 'hidden' : '';
 }
+
+// Create a modal element in your HTML
+const modalHTML = `
+  <div id="product-modal" class="modal" style="display:none;">
+    <div class="modal-content"></div>
+  </div>
+`;
+document.body.insertAdjacentHTML('beforeend', modalHTML);

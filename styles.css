@@ -263,7 +263,7 @@ main {
   
   
 .footer {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  background: linear-gradient(135deg, #FAD1BB 0%, #FAD9BA 23%, #F9B292 58%, #FABE9A 80%, #F9D2AB 100%);
   color: white;
   padding: 2rem 0;
   position: relative;
@@ -436,7 +436,7 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden; 
 }
 
@@ -447,7 +447,7 @@ main {
   border: 1px solid #888;
   width: 90%;
   max-width: 600px;
-  height: 80vh;
+  height: auto; /* Adjust height as needed */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -550,4 +550,70 @@ main {
 
 .add-to-cart.tapped {
   transform: scale(0.95);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.quantity-selector,
+.size-selector {
+  margin-top: 10px;
+}
+
+.add-to-cart-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #45a049;
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
 }
